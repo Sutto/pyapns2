@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+twistd --syslog -n web --class=pyapns.server.APNSServer --port=7077
