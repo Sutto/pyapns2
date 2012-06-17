@@ -8,6 +8,10 @@ It's built to be simple - I built the client around [libxml-xmlrpc](https://ruby
 as an alternative to the built in Ruby library (with the intention of using something that behaved better under Ruby
 1.9 with pyapns).
 
+So, in summary, This gem exists to be a client implementing the bare minimum needed for us, that works
+better out of the box (and is currently only supported on 1.9, although we will accept pull requests for
+Ruby 1.8).
+
 ## Installing
 
 Adding pyapns2 to your application is as simple as adding the following to your gemfile:
