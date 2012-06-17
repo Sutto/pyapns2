@@ -1,0 +1,578 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://{host}:{port}/
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="utf-8" ?>
+
+        <methodCall><methodName>provision</methodName><params><param><value><string>{fake_app}</string></value></param><param><value><string>{cert}</string></value></param><param><value><string>sandbox</string></value></param><param><value><int>15</int></value></param></params></methodCall>'
+    headers:
+      Content-Type:
+      - text/xml
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 17 Jun 2012 01:01:31 GMT
+      Content-Length:
+      - '114'
+      Content-Type:
+      - text/xml
+      Server:
+      - TwistedWeb/11.0.0
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0''?>
+
+        <methodResponse>
+
+        <params>
+
+        <param>
+
+        <value><nil/></value></param>
+
+        </params>
+
+        </methodResponse>
+
+'
+    http_version: 
+  recorded_at: Sun, 17 Jun 2012 01:01:31 GMT
+- request:
+    method: post
+    uri: http://{host}:{port}/
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="utf-8" ?>
+
+        <methodCall><methodName>notify</methodName><params><param><value><string>this-is-a-fake-app</string></value></param><param><value><string>{token}</string></value></param><param><value><struct><member><name>aps</name><value><struct><member><name>alert</name><value><string>Hello
+        from tests!</string></value></member></struct></value></member></struct></value></param></params></methodCall>'
+    headers:
+      Content-Type:
+      - text/xml
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 17 Jun 2012 01:01:31 GMT
+      Content-Length:
+      - '303'
+      Content-Type:
+      - text/xml
+      Server:
+      - TwistedWeb/11.0.0
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0''?>
+
+        <methodResponse>
+
+        <fault>
+
+        <value><struct>
+
+        <member>
+
+        <name>faultCode</name>
+
+        <value><int>404</int></value>
+
+        </member>
+
+        <member>
+
+        <name>faultString</name>
+
+        <value><string>The app_id specified has not been provisioned.</string></value>
+
+        </member>
+
+        </struct></value>
+
+        </fault>
+
+        </methodResponse>
+
+'
+    http_version: 
+  recorded_at: Sun, 17 Jun 2012 01:01:31 GMT
+- request:
+    method: post
+    uri: http://{host}:{port}/
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="utf-8" ?>
+
+        <methodCall><methodName>notify</methodName><params><param><value><string>non-existing-app</string></value></param><param><value><string>{token}</string></value></param><param><value><struct><member><name>aps</name><value><struct><member><name>alert</name><value><string>Hello
+        from tests!</string></value></member></struct></value></member></struct></value></param></params></methodCall>'
+    headers:
+      Content-Type:
+      - text/xml
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 17 Jun 2012 01:01:31 GMT
+      Content-Length:
+      - '303'
+      Content-Type:
+      - text/xml
+      Server:
+      - TwistedWeb/11.0.0
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0''?>
+
+        <methodResponse>
+
+        <fault>
+
+        <value><struct>
+
+        <member>
+
+        <name>faultCode</name>
+
+        <value><int>404</int></value>
+
+        </member>
+
+        <member>
+
+        <name>faultString</name>
+
+        <value><string>The app_id specified has not been provisioned.</string></value>
+
+        </member>
+
+        </struct></value>
+
+        </fault>
+
+        </methodResponse>
+
+'
+    http_version: 
+  recorded_at: Sun, 17 Jun 2012 01:01:31 GMT
+- request:
+    method: post
+    uri: http://{host}:{port}/
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="utf-8" ?>
+
+        <methodCall><methodName>notify</methodName><params><param><value><string>{fake_app}</string></value></param><param><value><string>aaaaa</string></value></param><param><value><struct><member><name>aps</name><value><struct><member><name>alert</name><value><string>Hello
+        from tests!</string></value></member></struct></value></member></struct></value></param></params></methodCall>'
+    headers:
+      Content-Type:
+      - text/xml
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 17 Jun 2012 01:01:31 GMT
+      Content-Length:
+      - '263'
+      Content-Type:
+      - text/xml
+      Server:
+      - TwistedWeb/11.0.0
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0''?>
+
+        <methodResponse>
+
+        <fault>
+
+        <value><struct>
+
+        <member>
+
+        <name>faultCode</name>
+
+        <value><int>8002</int></value>
+
+        </member>
+
+        <member>
+
+        <name>faultString</name>
+
+        <value><string>error</string></value>
+
+        </member>
+
+        </struct></value>
+
+        </fault>
+
+        </methodResponse>
+
+'
+    http_version: 
+  recorded_at: Sun, 17 Jun 2012 01:01:31 GMT
+- request:
+    method: post
+    uri: http://{host}:{port}/
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="utf-8" ?>
+
+        <methodCall><methodName>notify</methodName><params><param><value><string>{fake_app}</string></value></param><param><value><string>{token}</string></value></param><param><value><struct><member><name>aps</name><value><struct><member><name>alert</name><value><string>Hello
+        from tests!</string></value></member></struct></value></member></struct></value></param></params></methodCall>'
+    headers:
+      Content-Type:
+      - text/xml
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 17 Jun 2012 01:01:31 GMT
+      Content-Length:
+      - '114'
+      Content-Type:
+      - text/xml
+      Server:
+      - TwistedWeb/11.0.0
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0''?>
+
+        <methodResponse>
+
+        <params>
+
+        <param>
+
+        <value><nil/></value></param>
+
+        </params>
+
+        </methodResponse>
+
+'
+    http_version: 
+  recorded_at: Sun, 17 Jun 2012 01:01:31 GMT
+- request:
+    method: post
+    uri: http://{host}:{port}/
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="utf-8" ?>
+
+        <methodCall><methodName>notify</methodName><params><param><value><string>{fake_app}</string></value></param><param><value><array><data><value><string>{token}</string></value></data></array></value></param><param><value><array><data><value><struct><member><name>aps</name><value><struct><member><name>alert</name><value><string>Hello
+        from tests!</string></value></member></struct></value></member></struct></value></data></array></value></param></params></methodCall>'
+    headers:
+      Content-Type:
+      - text/xml
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 17 Jun 2012 01:01:31 GMT
+      Content-Length:
+      - '114'
+      Content-Type:
+      - text/xml
+      Server:
+      - TwistedWeb/11.0.0
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0''?>
+
+        <methodResponse>
+
+        <params>
+
+        <param>
+
+        <value><nil/></value></param>
+
+        </params>
+
+        </methodResponse>
+
+'
+    http_version: 
+  recorded_at: Sun, 17 Jun 2012 01:01:31 GMT
+- request:
+    method: post
+    uri: http://{host}:{port}/
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="utf-8" ?>
+
+        <methodCall><methodName>feedback</methodName><params><param><value><string>{fake_app}</string></value></param></params></methodCall>'
+    headers:
+      Content-Type:
+      - text/xml
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 17 Jun 2012 01:01:32 GMT
+      Content-Length:
+      - '138'
+      Content-Type:
+      - text/xml
+      Server:
+      - TwistedWeb/11.0.0
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0''?>
+
+        <methodResponse>
+
+        <params>
+
+        <param>
+
+        <value><array><data>
+
+        </data></array></value>
+
+        </param>
+
+        </params>
+
+        </methodResponse>
+
+'
+    http_version: 
+  recorded_at: Sun, 17 Jun 2012 01:01:35 GMT
+- request:
+    method: post
+    uri: http://{host}:{port}/
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="utf-8" ?>
+
+        <methodCall><methodName>feedback</methodName><params><param><value><int>1</int></value></param></params></methodCall>'
+    headers:
+      Content-Type:
+      - text/xml
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 17 Jun 2012 01:01:35 GMT
+      Content-Length:
+      - '303'
+      Content-Type:
+      - text/xml
+      Server:
+      - TwistedWeb/11.0.0
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0''?>
+
+        <methodResponse>
+
+        <fault>
+
+        <value><struct>
+
+        <member>
+
+        <name>faultCode</name>
+
+        <value><int>404</int></value>
+
+        </member>
+
+        <member>
+
+        <name>faultString</name>
+
+        <value><string>The app_id specified has not been provisioned.</string></value>
+
+        </member>
+
+        </struct></value>
+
+        </fault>
+
+        </methodResponse>
+
+'
+    http_version: 
+  recorded_at: Sun, 17 Jun 2012 01:01:35 GMT
+- request:
+    method: post
+    uri: http://{host}:{port}/
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="utf-8" ?>
+
+        <methodCall><methodName>feedback</methodName><params><param><value><string>unknown-app-id</string></value></param></params></methodCall>'
+    headers:
+      Content-Type:
+      - text/xml
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 17 Jun 2012 01:01:35 GMT
+      Content-Length:
+      - '303'
+      Content-Type:
+      - text/xml
+      Server:
+      - TwistedWeb/11.0.0
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0''?>
+
+        <methodResponse>
+
+        <fault>
+
+        <value><struct>
+
+        <member>
+
+        <name>faultCode</name>
+
+        <value><int>404</int></value>
+
+        </member>
+
+        <member>
+
+        <name>faultString</name>
+
+        <value><string>The app_id specified has not been provisioned.</string></value>
+
+        </member>
+
+        </struct></value>
+
+        </fault>
+
+        </methodResponse>
+
+'
+    http_version: 
+  recorded_at: Sun, 17 Jun 2012 01:01:35 GMT
+- request:
+    method: post
+    uri: http://{host}:{port}/
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version="1.0" encoding="utf-8" ?>
+
+        <methodCall><methodName>feedback</methodName><params><param><value><string>id</string></value></param></params></methodCall>'
+    headers:
+      Content-Type:
+      - text/xml
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 17 Jun 2012 01:01:35 GMT
+      Content-Length:
+      - '303'
+      Content-Type:
+      - text/xml
+      Server:
+      - TwistedWeb/11.0.0
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0''?>
+
+        <methodResponse>
+
+        <fault>
+
+        <value><struct>
+
+        <member>
+
+        <name>faultCode</name>
+
+        <value><int>404</int></value>
+
+        </member>
+
+        <member>
+
+        <name>faultString</name>
+
+        <value><string>The app_id specified has not been provisioned.</string></value>
+
+        </member>
+
+        </struct></value>
+
+        </fault>
+
+        </methodResponse>
+
+'
+    http_version: 
+  recorded_at: Sun, 17 Jun 2012 01:01:35 GMT
+recorded_with: VCR 2.2.2
