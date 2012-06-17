@@ -72,8 +72,8 @@ class Pyapns2
     timeout = options[:timeout]
     cert    = options[:cert]
     env     = options[:environment]
-    raise ArgumentError, ":app_id must be a string" unless app_id.is_a?(String)
-    raise ArgumentError, ":cert must be a string" unless cert.is_a?(String)
+    raise ArgumentError, ":app_id must be a string" unless app_id.is_a?(String) && !app_id.strip.empty?
+    raise ArgumentError, ":cert must be a string" unless cert.is_a?(String) && !cert.strip.empty?
     raise ArgumentError, ":environment (or :env) must be one of sandbox or production" unless %w(production sandbox).include?(env)
     raise ArgumentError, ":timeout must be a valid integer" unless timeout.is_a?(Numeric) && timeout >= 0
     @xmlrpc.call 'provision', app_id, cert, env, timeout
@@ -110,6 +110,7 @@ class Pyapns2
 
   # Takes an app id and returns the list of feedback from pyapns.
   def feedback(app_id)
+    raise ArgumentError, "app_id must be provided" unless app_id
     @xmlrpc.call('feedback', app_id).params
   rescue LibXML::XML::XMLRPC::RemoteCallError => e
     raise Error.new e.message
