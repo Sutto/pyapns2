@@ -16,7 +16,9 @@ Ruby 1.8).
 
 Adding pyapns2 to your application is as simple as adding the following to your gemfile:
 
+```ruby
 gem 'pyapns2', '~> 1.0'
+```
 
 ## Using
 
