@@ -4,20 +4,25 @@ Pyapns2 is a Ruby client for the [pyapns](https://github.com/samuraisam/pyapns) 
 server written in Ruby. It provides a simple interface to implement the process of sending push
 notifications and receiving feedback, with pyapns taking care of all of the hard work.
 
-It's built to be simple - I built the client around [libxml-xmlrpc](https://rubygems.org/gems/libxml-xmlrpc)
-as an alternative to the built in Ruby library (with the intention of using something that behaved better under Ruby
-1.9 with pyapns).
+It's built to be simple - I built the client around [Rapuncel](https://github.com/kayoom/rapuncel)
+(with the intention of using something that behaved better under Ruby 1.9 with pyapns).
 
 So, in summary, This gem exists to be a client implementing the bare minimum needed for us, that works
 better out of the box (and is currently only supported on 1.9, although we will accept pull requests for
 Ruby 1.8).
+
+### Please Note
+
+2.0 involved changing from libxml-xmlrpc to use rapuncel.
+This is because libxml-ruby conflicts with nokogiri, resulting in segfaults.
+Rapuncel instead only uses nokogiri.
 
 ## Installing
 
 Adding pyapns2 to your application is as simple as adding the following to your gemfile:
 
 ```ruby
-gem 'pyapns2', '~> 1.0'
+gem 'pyapns2', '~> 2.0'
 ```
 
 ## Using

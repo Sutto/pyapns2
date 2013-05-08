@@ -1,7 +1,16 @@
 require 'net/http'
-require 'xml/libxml/xmlrpc'
+require 'rapuncel'
 
 class Pyapns2
+
+  class Deserializer < Rapuncel::XmlRpc::Deserializer
+
+    # Deal with the fact it doesn't support nil by default.
+    def deserialize_nil(node)
+      nil
+    end
+
+  end
 
   require 'pyapns2/version'
 
@@ -50,8 +59,8 @@ class Pyapns2
     raise ArgumentError, "port must be a number" unless port.is_a?(Numeric)
     @host   = host
     @port   = port
-    @http   = Net::HTTP.new host, port
-    @xmlrpc = XML::XMLRPC::Client.new @http, "/"
+    @xmlrpc = Rapuncel::Client.new :host => @host, :port => @port, :path => "/", :raise_on => :both
+    def @xmlrpc.deserializer; Pyapns2::Deserializer; end
   end
 
   def inspect
@@ -76,9 +85,9 @@ class Pyapns2
     raise ArgumentError, ":cert must be a string" unless cert.is_a?(String) && !cert.strip.empty?
     raise ArgumentError, ":environment (or :env) must be one of sandbox or production" unless %w(production sandbox).include?(env)
     raise ArgumentError, ":timeout must be a valid integer" unless timeout.is_a?(Numeric) && timeout >= 0
-    @xmlrpc.call 'provision', app_id, cert, env, timeout
+    @xmlrpc.call_to_ruby 'provision', app_id, cert, env, timeout
     true
-  rescue LibXML::XML::XMLRPC::RemoteCallError => e
+  rescue  Rapuncel::Response::Exception => e
     raise Error.new e.message
   end
 
@@ -102,17 +111,17 @@ class Pyapns2
     if types.any? && !types.all?
       raise ArgumentError, "The notifications and the strings must both  be arrays if one is."
     end
-    @xmlrpc.call 'notify', app_id, token, notification
+    @xmlrpc.call_to_ruby 'notify', app_id, token, notification
     true
-  rescue LibXML::XML::XMLRPC::RemoteCallError => e
+  rescue  Rapuncel::Response::Exception => e
     raise Error.new e.message
   end
 
   # Takes an app id and returns the list of feedback from pyapns.
   def feedback(app_id)
     raise ArgumentError, "app_id must be provided" unless app_id
-    @xmlrpc.call('feedback', app_id).params
-  rescue LibXML::XML::XMLRPC::RemoteCallError => e
+    @xmlrpc.call_to_ruby('feedback', app_id)
+  rescue  Rapuncel::Response::Exception => e
     raise Error.new e.message
   end
 
